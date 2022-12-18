@@ -6,5 +6,10 @@ func Run() error {
 		return err
 	}
 
+	err = runDay2()
+	if err != nil {
+		return err
+	}
+
 	return nil
 }

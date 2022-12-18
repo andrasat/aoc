@@ -7,6 +7,8 @@ import (
 )
 
 func runDay1() error {
+	fmt.Println("\n ----- DAY 1 -----")
+
 	inputs, err := readfile("./inputs/day1-puzzle.txt")
 	if err != nil {
 		return err
@@ -49,8 +51,8 @@ func runDay1() error {
 		topThreeSum += highestCalorie
 	}
 
-	fmt.Println("day 1 result=", topThreeHighestCalorie)
-	fmt.Println("day 1 result=", topThreeSum)
+	fmt.Println("top 3 rank   =", topThreeHighestCalorie)
+	fmt.Println("sum of top 3 =", topThreeSum)
 
 	return nil
 }
