@@ -29,6 +29,7 @@ fn calculate_elves_calories(data_input: String) -> HashMap<String, i64> {
 }
 
 pub fn day_1() {
+    println!("\n----- DAY 1 -----");
     let path_file = String::from("../inputs/day1-puzzle.txt");
     let inputs = read_file(path_file);
 

@@ -1,7 +1,7 @@
 use super::readfile::read_file;
 
 pub fn day_3() {
-    println!("\n----- DAY 1 -----");
+    println!("\n----- DAY 3 -----");
     let path_file = String::from("../inputs/day3-puzzle.txt");
     let inputs = read_file(path_file);
 
@@ -40,4 +40,35 @@ pub fn day_3() {
     };
 
     println!("rearrangement sum: {}", sum);
+
+    println!("\n----- DAY 3: Part Two -----");
+
+    let cloned_inputs = inputs.clone();
+    let split_input_two = cloned_inputs.split("\n");
+
+    let mut all_group_vec: Vec<u8> = Vec::new();
+
+    let mut first_rucksack_group = "";
+    let mut second_rucksack_group = "";
+    let mut third_rucksack_group = "";
+
+    let count: u16 = 0;
+    for row in split_input_two {
+        count += 1;
+
+        // let first_comp_chars: Vec<char> = first_compartment.chars().collect();
+
+        // for first_comp_char in first_comp_chars {
+        //     if second_compartment.contains(first_comp_char) {
+        //         let ascii_num = first_comp_char as u8;
+        //         if ascii_num >= 97 {
+        //             rearrangement_vec.push(ascii_num - 96);
+        //             break;
+        //         } else if ascii_num >= 65 {
+        //             rearrangement_vec.push(ascii_num - 38);
+        //             break;
+        //         }
+        //     }
+        // }
+    }
 }
