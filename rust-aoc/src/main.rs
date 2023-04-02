@@ -1,6 +1,6 @@
-use aoc::{day1, day3};
+mod year_2022;
 
-mod aoc;
+use year_2022::{day1, day3};
 
 fn main() {
     day1::day_1();
