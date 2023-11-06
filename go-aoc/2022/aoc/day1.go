@@ -9,7 +9,7 @@ import (
 func runDay1() error {
 	fmt.Println("\n ----- DAY 1 -----")
 
-	inputs, err := readfile("./inputs/day1-puzzle.txt")
+	inputs, err := readfile("./../inputs/day1-puzzle.txt")
 	if err != nil {
 		return err
 	}

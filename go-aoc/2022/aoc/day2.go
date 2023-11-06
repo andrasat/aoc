@@ -32,7 +32,7 @@ func runDay2() error {
 		"CY": true,
 	}
 
-	inputs, err := readfile("./inputs/day2-puzzle.txt")
+	inputs, err := readfile("./../inputs/day2-puzzle.txt")
 	if err != nil {
 		return err
 	}
