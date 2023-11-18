@@ -1,0 +1,26 @@
+(lang dune 3.11)
+
+(name ocaml_aoc)
+
+(generate_opam_files true)
+
+(source
+ (github andrasat/aoc))
+
+(authors "Andra Satria")
+
+(maintainers "Andra Satria")
+
+(license NONE)
+
+(documentation https://url/to/documentation)
+
+(package
+ (name ocaml_aoc)
+ (synopsis "Advent of Code solutions in OCaml")
+ (description "Advent of Code solutions in OCaml")
+ (depends ocaml dune)
+ (tags
+  (topics "to describe" your project)))
+
+; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project
