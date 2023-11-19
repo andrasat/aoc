@@ -1,4 +1,4 @@
 (executable
  (public_name ocaml_aoc)
  (name main)
- (libraries ocaml_aoc))
+ (libraries helper))
