@@ -41,7 +41,7 @@ let () =
   let inputs = Helper.FileReader.read_file "../inputs/day4-2022-puzzle.txt" in
   (* just print the data *)
   let print_elems elem = Printf.printf "%s\n" elem in
-  List.iter (fun elem -> print_elems elem) inputs;
+  List.iter print_elems inputs;
   (* Q1 *)
   Printf.printf "Result q.1: %d\n" (sum_of_assignment_pairs inputs get_point_if_contain);
   (* Q2 *)
