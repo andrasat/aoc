@@ -12,7 +12,7 @@ let get_min_max (range_list : string list) =
   , List.nth second_range 1 )
 ;;
 
-(* Q1 answer: check if pair overlap each other *)
+(* Q1 answer: check if pair contain each other *)
 let get_point_if_contain (pair : string) =
   let pair_list = String.split_on_char ',' pair in
   let first_min, first_max, second_min, second_max = get_min_max pair_list in
@@ -22,7 +22,7 @@ let get_point_if_contain (pair : string) =
   else 0
 ;;
 
-(* Q2 answer: check if pair contain each other *)
+(* Q2 answer: check if pair overlap each other *)
 let get_point_if_overlap (pair : string) =
   let pair_list = String.split_on_char ',' pair in
   let first_min, first_max, second_min, second_max = get_min_max pair_list in
