@@ -1,10 +1,10 @@
-package aoc
+package utils
 
 import (
 	"os"
 )
 
-func readfile(filepath string) (string, error) {
+func Readfile(filepath string) (string, error) {
 	buf, err := os.ReadFile(filepath)
 	if err != nil {
 		return "", err

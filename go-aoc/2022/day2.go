@@ -3,6 +3,8 @@ package aoc
 import (
 	"fmt"
 	"strings"
+
+	"github.com/andrasat/aoc/utils"
 )
 
 func runDay2() error {
@@ -32,7 +34,7 @@ func runDay2() error {
 		"CY": true,
 	}
 
-	inputs, err := readfile("./../inputs/day2-puzzle.txt")
+	inputs, err := utils.Readfile("./../inputs/2022/day2-puzzle.txt")
 	if err != nil {
 		return err
 	}

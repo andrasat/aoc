@@ -2,7 +2,7 @@ use super::readfile::read_file;
 
 pub fn day_3() {
     println!("\n----- DAY 3 -----");
-    let path_file = String::from("../inputs/day3-puzzle.txt");
+    let path_file = String::from("../inputs/2022/day3-puzzle.txt");
     let inputs = read_file(path_file);
 
     let split_inputs = inputs.split("\n");

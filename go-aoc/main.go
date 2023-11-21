@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/andrasat/aoc-2022/aoc"
+	aoc "github.com/andrasat/aoc/2022"
 )
 
 func main() {

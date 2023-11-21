@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/andrasat/aoc/utils"
 )
 
 func runDay1() error {
 	fmt.Println("\n ----- DAY 1 -----")
 
-	inputs, err := readfile("./../inputs/day1-puzzle.txt")
+	inputs, err := utils.Readfile("./../inputs/2022/day1-puzzle.txt")
 	if err != nil {
 		return err
 	}
