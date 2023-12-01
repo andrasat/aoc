@@ -40,7 +40,9 @@ module Exec = struct
   let run () =
     print_endline "Day 4: ";
     let inputs = Helper.FileReader.read_file "../inputs/2022/day4-puzzle.txt" in
-    Printf.printf "Q1: %d\n" (sum_of_assignment_pairs inputs get_point_if_contain);
-    Printf.printf "Q2: %d\n" (sum_of_assignment_pairs inputs get_point_if_overlap)
+    let input_list = String.split_on_char '\n' inputs in
+    Printf.printf "Q1: %d\n" (sum_of_assignment_pairs input_list get_point_if_contain);
+    Printf.printf "Q2: %d\n" (sum_of_assignment_pairs input_list get_point_if_overlap);
+    print_endline "-------------------------"
   ;;
 end
