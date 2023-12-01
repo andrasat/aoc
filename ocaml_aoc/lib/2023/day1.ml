@@ -55,8 +55,8 @@ module Exec = struct
     print_endline "Day 1: ";
     let inputs = Helper.FileReader.read_file "../inputs/2023/day1-puzzle.txt" in
     let input_list = String.split_on_char '\n' inputs in
-    Printf.printf "Q1: %d \n" (sum_of_ints_part_one input_list);
-    Printf.printf "Q2: %d \n" (sum_of_ints_part_two input_list);
+    Printf.printf "Part 1: %d \n" (sum_of_ints_part_one input_list);
+    Printf.printf "Part 2: %d \n" (sum_of_ints_part_two input_list);
     print_endline "-------------------------"
   ;;
 end
