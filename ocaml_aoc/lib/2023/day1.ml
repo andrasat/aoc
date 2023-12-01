@@ -31,10 +31,7 @@ let get_last_digit input regx =
 ;;
 
 let string_to_int input regx =
-  let first_digit = get_first_digit input regx in
-  let last_digit = get_last_digit input regx in
-  (* Printf.printf "first: %s, last: %s \n" first_digit last_digit;
-     Printf.printf "int: %d \n" (int_of_string (first_digit ^ last_digit)); *)
+  let first_digit, last_digit = get_first_digit input regx, get_last_digit input regx in
   int_of_string (first_digit ^ last_digit)
 ;;
 
