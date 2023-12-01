@@ -1,7 +1,17 @@
 let digit_only_regexp = Str.regexp "[1-9]"
 
 let digit_and_wordy_digit_regexp =
-  Str.regexp "[1-9]\\|one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine"
+  Str.regexp
+    ("[1-9]"
+     ^ "\\|one"
+     ^ "\\|two"
+     ^ "\\|three"
+     ^ "\\|four"
+     ^ "\\|five"
+     ^ "\\|six"
+     ^ "\\|seven"
+     ^ "\\|eight"
+     ^ "\\|nine")
 ;;
 
 let word_to_digit word =
@@ -20,13 +30,13 @@ let word_to_digit word =
 
 let get_first_digit input regx =
   match Str.search_forward regx input 0 with
-  | _ -> word_to_digit (Str.matched_string input)
+  | _ -> Str.matched_string input |> word_to_digit
   | exception Not_found -> ""
 ;;
 
 let get_last_digit input regx =
   match Str.search_backward regx input (String.length input - 1) with
-  | _ -> word_to_digit (Str.matched_string input)
+  | _ -> Str.matched_string input |> word_to_digit
   | exception Not_found -> ""
 ;;
 
