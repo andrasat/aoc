@@ -1,6 +1,6 @@
 let digit_only_regexp = Str.regexp "[1-9]"
 
-let digit_regexp =
+let digit_and_wordy_digit_regexp =
   Str.regexp "[1-9]\\|one\\|two\\|three\\|four\\|five\\|six\\|seven\\|eight\\|nine"
 ;;
 
@@ -47,7 +47,7 @@ let rec sum_of_ints_part_one input_list =
 let rec sum_of_ints_part_two input_list =
   match input_list with
   | [] -> 0
-  | x :: xs -> string_to_int x digit_regexp + sum_of_ints_part_two xs
+  | x :: xs -> string_to_int x digit_and_wordy_digit_regexp + sum_of_ints_part_two xs
 ;;
 
 module Exec = struct
