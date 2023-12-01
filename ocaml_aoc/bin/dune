@@ -1,4 +1,4 @@
 (executable
  (public_name ocaml_aoc)
  (name main)
- (libraries AOC2022))
+ (libraries AOC2022 AOC2023))
