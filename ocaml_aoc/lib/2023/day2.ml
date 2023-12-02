@@ -74,10 +74,22 @@ let get_game_id_when_sum_of_gems_are_valid input =
   else 0
 ;;
 
+let get_power_of_gems input =
+  let input_list = String.split ~on:':' input in
+  let bag_of_gem = input_list |> List.last_exn |> get_highest_possible_bag_of_gem in
+  bag_of_gem.red * bag_of_gem.green * bag_of_gem.blue
+;;
+
 let rec part_one_solution input_list =
   match input_list with
   | [] -> 0
   | x :: xs -> get_game_id_when_sum_of_gems_are_valid x + part_one_solution xs
+;;
+
+let rec part_two_solution input_list =
+  match input_list with
+  | [] -> 0
+  | x :: xs -> get_power_of_gems x + part_two_solution xs
 ;;
 
 module Exec = struct
@@ -86,6 +98,7 @@ module Exec = struct
     let inputs = Helper.FileReader.read_file "../inputs/2023/day2-puzzle.txt" in
     let input_list = String.split ~on:'\n' inputs in
     printf "Part 1: %d\n" (part_one_solution input_list);
+    printf "Part 2: %d\n" (part_two_solution input_list);
     print_endline "-------------------------"
   ;;
 end
