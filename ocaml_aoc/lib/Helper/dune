@@ -1,2 +1,3 @@
 (library
- (name helper))
+ (name helper)
+ (libraries core))

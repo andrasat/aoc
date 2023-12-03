@@ -5,7 +5,7 @@ description: "Advent of Code solutions in OCaml"
 maintainer: ["Andra Satria"]
 authors: ["Andra Satria"]
 license: "NONE"
-tags: ["topics" "to describe" "your" "project"]
+tags: ["aoc" "ocaml"]
 homepage: "https://github.com/andrasat/aoc"
 doc: "https://url/to/documentation"
 bug-reports: "https://github.com/andrasat/aoc/issues"
