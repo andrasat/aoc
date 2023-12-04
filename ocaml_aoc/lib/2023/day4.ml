@@ -4,30 +4,32 @@ let filter_empty_str_list str_list =
   List.filter str_list ~f:(fun s -> String.length s > 0)
 ;;
 
+let extract_card_numbers str_list =
+  str_list |> List.map ~f:(String.split ~on:' ') |> List.map ~f:filter_empty_str_list
+;;
+
+let filter_winning_numbers card_sections =
+  match card_sections with
+  | [] -> []
+  | _ :: [] -> []
+  | winning_numbers :: card_numbers :: _ ->
+    List.filter card_numbers ~f:(fun s -> List.exists winning_numbers ~f:(String.equal s))
+;;
+
+let parse_data input =
+  input
+  |> String.split ~on:'\n'
+  |> List.map ~f:(fun s -> String.sub s ~pos:9 ~len:(String.length s - 9))
+  |> List.map ~f:(fun s -> String.split s ~on:'|' |> List.map ~f:String.strip)
+  |> List.map ~f:extract_card_numbers
+  |> List.map ~f:filter_winning_numbers
+;;
+
 let calculate_card_number sum str_list =
   match str_list with
   | [] -> sum
   | _ :: [] -> sum + 1
   | _ :: rest -> sum + Int.pow 2 (List.length rest)
-;;
-
-let parse_data input =
-  input
-  |> String.split ~on:'\n' (* remove "Card X: " *)
-  |> List.map ~f:(fun s -> String.sub s ~pos:9 ~len:(String.length s - 9))
-    (* split into winning numbers and card numbers *)
-  |> List.map ~f:(fun s -> String.split s ~on:'|' |> List.map ~f:String.strip)
-    (* split card numbers and filter empty string *)
-  |> List.map ~f:(fun sl ->
-    List.map sl ~f:(String.split ~on:' ') |> List.map ~f:filter_empty_str_list)
-    (* extract matched card numbers with winning numbers *)
-  |> List.map ~f:(fun card_sections ->
-    match card_sections with
-    | [] -> []
-    | _ :: [] -> []
-    | winning_numbers :: card_numbers :: _ ->
-      List.filter card_numbers ~f:(fun s ->
-        List.exists winning_numbers ~f:(String.equal s)))
 ;;
 
 let part_one input =
