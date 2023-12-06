@@ -1,1 +1,1 @@
-let () = AOC2023.Day5.Exec.run ()
+let () = AOC2023.Day6.Exec.run ()
