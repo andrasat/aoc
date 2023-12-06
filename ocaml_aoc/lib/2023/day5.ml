@@ -57,11 +57,8 @@ let find_lowest_location ((seeds : int list), (maps : int list list list)) =
   List.fold
     ~init:0
     ~f:(fun lowest seed ->
-      match lowest with
-      | 0 -> find_location seed maps
-      | x ->
-        let loc = find_location seed maps in
-        if loc < x then loc else x)
+      let new_loc = find_location seed maps in
+      if lowest = 0 || new_loc < lowest then new_loc else lowest)
     seeds
 ;;
 
@@ -70,32 +67,22 @@ let part_one input =
   find_lowest_location (seeds, maps)
 ;;
 
-let rec find_lowest_location_v2 loc ((seeds : int list list), (maps : int list list list))
-  =
-  match seeds with
-  | [] -> loc
-  | seed_range :: rest ->
-    let seed_start = List.hd_exn seed_range in
-    let seed_length = List.nth_exn seed_range 1 in
-    let range = List.init (seed_length - 1) ~f:(fun i -> seed_start + i) in
-    printf
-      "Range, %d-%d, start: %d length: %d\n"
-      (List.hd_exn range)
-      (List.last_exn range)
-      seed_start
-      seed_length;
-    let new_loc = find_lowest_location (range, maps) in
-    if loc = 0 || new_loc < loc
-    then find_lowest_location_v2 new_loc (rest, maps)
-    else find_lowest_location_v2 loc (rest, maps)
+let find_lowest_location_v2 ((seeds : int list list), (maps : int list list list)) =
+  List.fold
+    ~init:0
+    ~f:(fun lowest seed_range ->
+      let seed_start = List.hd_exn seed_range in
+      let seed_length = List.nth_exn seed_range 1 in
+      let range = List.init seed_length ~f:(fun i -> seed_start + i) in
+      let new_loc = find_lowest_location (range, maps) in
+      if lowest = 0 || new_loc < lowest then new_loc else lowest)
+    seeds
 ;;
 
 let part_two input =
   let seeds, maps = parse_data input ~seed_parser:parse_seeds_range in
-  find_lowest_location_v2 0 (seeds, maps)
+  find_lowest_location_v2 (seeds, maps)
 ;;
-
-(* find_lowest_location (seeds, maps) *)
 
 module Exec = struct
   let run () =
