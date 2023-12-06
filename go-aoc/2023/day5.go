@@ -21,6 +21,18 @@ type Data struct {
 	maps  [][]Map
 }
 
+func unique(intSlice []int) []int {
+	keys := make(map[int]bool)
+	list := []int{}
+	for _, entry := range intSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
+
 func parseData(input string, getSeedRange bool) Data {
 	data := Data{
 		seeds: []int{},
@@ -39,22 +51,23 @@ func parseData(input string, getSeedRange bool) Data {
 			if (i+1)%2 == 0 {
 				start := data.seeds[i-1] + 1
 				for j := start; j < start+intSeed; j++ {
-					if exist := slices.ContainsFunc(data.seeds, func(seed int) bool {
-						return seed == j
-					}); !exist {
-						data.seeds = append(data.seeds, j)
-					}
+					data.seeds = append(data.seeds, j)
 				}
 			} else {
 				data.seeds = append(data.seeds, intSeed)
 			}
 		}
+
+		data.seeds = unique(data.seeds)
+		slices.Sort(data.seeds)
 	} else {
 		separated_seeds := strings.Split(strings.Replace(seeds, "seeds: ", "", 1), " ")
 		for _, seed := range separated_seeds {
 			intSeed, _ := strconv.Atoi(seed)
 			data.seeds = append(data.seeds, intSeed)
 		}
+
+		slices.Sort(data.seeds)
 	}
 
 	regexPattern := regexp.MustCompile(`\d+`)
