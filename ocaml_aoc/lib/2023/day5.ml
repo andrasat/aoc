@@ -45,7 +45,7 @@ let rec find_location loc (maps : int list list list) =
         | [] -> failwith "Invalid map"
         | [ dest; src; length ] ->
           let max_src = src + length in
-          if loc >= src && loc <= max_src
+          if loc >= src && loc < max_src
           then (
             let new_loc = loc + (dest - src) in
             find_location new_loc rest_of_maps)
@@ -68,15 +68,14 @@ let part_one input =
 ;;
 
 let find_lowest_location_v2 ((seeds : int list list), (maps : int list list list)) =
-  List.fold
-    ~init:0
-    ~f:(fun lowest seed_range ->
-      let seed_start = List.hd_exn seed_range in
-      let seed_length = List.nth_exn seed_range 1 in
-      let range = List.init seed_length ~f:(fun i -> seed_start + i) in
-      let new_loc = find_lowest_location (range, maps) in
-      if lowest = 0 || new_loc < lowest then new_loc else lowest)
-    seeds
+  seeds
+  |> List.map ~f:(fun seed_range ->
+    let seed_start = List.hd_exn seed_range in
+    let seed_length = List.nth_exn seed_range 1 in
+    let range = List.init seed_length ~f:(fun i -> seed_start + i) in
+    find_lowest_location (range, maps))
+  |> List.sort ~compare:Int.compare
+  |> List.hd_exn
 ;;
 
 let part_two input =
