@@ -19,7 +19,7 @@
  (name ocaml_aoc)
  (synopsis "Advent of Code solutions in OCaml")
  (description "Advent of Code solutions in OCaml")
- (depends ocaml dune)
+ (depends ocaml dune core)
  (tags
   (aoc ocaml)))
 
